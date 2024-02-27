@@ -1,21 +1,12 @@
 #include "MainWindow.h"
-#include "ImageManager.h"
-#include "ParasiteDetector.h"
-#include "ResultManager.h"
-#include "YOLOModel.h" // Include YOLOModel header
 
-#include <QVBoxLayout>
-#include <QLabel>
-#include <QPushButton>
-#include <QFileDialog>
-#include <QDebug>
 
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) 
+{
     // Initialize components
     imageManager = new ImageManager();
-    aiModel = new YOLOModel("yolov3.cfg", "yolov3.weights", "coco.names"); // Initialize YOLOModel
-    parasiteDetector = new ParasiteDetector(imageManager, aiModel);
     resultManager = new ResultManager();
+    parasiteDetector = new ParasiteDetector(imageManager, resultManager);
 
     // Setup main window
     QWidget *centralWidget = new QWidget(this);
@@ -38,11 +29,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     connect(saveResultsButton, &QPushButton::clicked, this, &MainWindow::on_saveResultsButtonClicked);
 }
 
-void MainWindow::on_openImageButtonClicked() {
+void MainWindow::on_openImageButtonClicked() 
+{
     QString imagePath = QFileDialog::getOpenFileName(this, tr("Open Image"), "", tr("Images (*.png *.jpg *.jpeg)"));
     if (!imagePath.isEmpty()) {
         // Load image
-        imageManager->loadImage(imagePath.toStdString());
+        imageManager->loadImages(imagePath.toStdString());
         // Display image
         cv::Mat image = imageManager->getCurrentImage();
         QImage qImage(image.data, image.cols, image.rows, image.step, QImage::Format_RGB888);
@@ -51,16 +43,18 @@ void MainWindow::on_openImageButtonClicked() {
     }
 }
 
-void MainWindow::on_analyzeButtonClicked() {
+void MainWindow::on_analyzeButtonClicked() 
+{
     // Perform analysis
     std::vector<Parasite> results = parasiteDetector->runAnalysis();
     // Process results (e.g., display bounding boxes on the image)
     // ...
 }
 
-void MainWindow::on_saveResultsButtonClicked() {
+void MainWindow::on_saveResultsButtonClicked() 
+{
     // Save results
-    resultManager->storeResults(parasiteDetector->getResults());
+    resultManager->storeResults(parasiteDetector->runAnalysis());
     // Export results to a file
-    resultManager->exportResults("/path/to/save/results.txt");
+    resultManager->exportResults("results.txt");
 }

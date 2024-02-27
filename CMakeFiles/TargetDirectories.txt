@@ -1,0 +1,3 @@
+/home/nash/code/ParasitePic/CMakeFiles/rebuild_cache.dir
+/home/nash/code/ParasitePic/CMakeFiles/ParasitePic.dir
+/home/nash/code/ParasitePic/CMakeFiles/edit_cache.dir

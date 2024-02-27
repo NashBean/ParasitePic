@@ -2,12 +2,15 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
-class QLabel;
-class QPushButton;
-class ImageManager;
-class ParasiteDetector;
-class ResultManager;
+#include <QFileDialog>
+#include <QLabel>
+#include <QPushButton>
+#include <QVBoxLayout>
+#include <QDebug>
+#include <opencv2/opencv.hpp>
+#include "ImageManager.h" // Include necessary headers
+#include "ParasiteDetector.h"
+#include "ResultManager.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT

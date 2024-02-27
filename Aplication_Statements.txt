@@ -1,0 +1,30 @@
+Project Objectives:
+
+    To help users identify parasites by common names and scientific classification.
+    To provide information and known treatments for the identified parasites.
+
+Project Scope:
+
+    Develop a cross-platform application using C/C++.
+    The application should allow users to load pictures for examination.
+    The application should be able to identify parasites in user-provided pictures.
+    The application should include all necessary for recognizing parasites based on their shapes and colors. Utalizing 
+    an AI component will be used for this purpose, which will have the capability to learn and improve itself over time.
+
+Stakeholders:
+    Nash (Project Owner)
+
+Functional Requirements:
+
+    The application should load images from a specified path.
+    The application should preprocess the loaded images before analysis.
+    The application should run an analysis on the preprocessed images to detect parasites.
+    The application should store the details of the detected parasites, including the bounding box, confidence score, and type.
+
+Non-Functional Requirements:
+
+    The application should load and preprocess images quickly to ensure a smooth user experience.
+    The application should run the analysis accurately and efficiently.
+    The application should handle errors gracefully, e.g., if there are issues with the image loading or preprocessing, the application should inform the user about the issue.
+
+

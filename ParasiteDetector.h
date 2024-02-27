@@ -4,15 +4,20 @@
 #include "ImageManager.h"
 #include "YOLOModel.h" // Include YOLOModel header
 #include "ResultManager.h"
-
-class ParasiteDetector {
+#include <opencv2/opencv.hpp>
+struct Parasite;
+class ImageManager;
+class ResultManager;
+class ParasiteDetector 
+{
 public:
-    ParasiteDetector(ImageManager* imageManager, YOLOModel* yoloModel, ResultManager* resultManager); // Modify constructor
+    ParasiteDetector(ImageManager* iM, ResultManager* rM); // Modify constructor
+    ~ParasiteDetector();
     std::vector<Parasite> runAnalysis();
 
 private:
-    ImageManager* imageManager;
     YOLOModel* yoloModel; // Change AIModel to YOLOModel
+    ImageManager* imageManager;
     ResultManager* resultManager;
 };
 

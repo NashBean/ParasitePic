@@ -3,11 +3,28 @@
 #define YOLOMODEL_H
 
 #include <opencv2/opencv.hpp>
+#include <fstream>
+#include <vector>
 
-struct Parasite {
+struct Parasite 
+{
     cv::Rect boundingBox;
     double confidenceScore;
+    std::string kingdom; 
+    std::string subkingdom; 
+    std::string phylum; 
+    std::string class_; 
+    std::string subclass; 
+    std::string order; 
+    std::string suborder; 
+    std::string superfamily; 
+    std::string family; 
+    std::string subfamily; 
+    std::string genus; 
+    std::string species; 
+    std::string subspecies; 
 };
+
 
 class YOLOModel {
 public:
@@ -19,6 +36,7 @@ private:
     std::string weightsPath;
     std::string classesPath;
     cv::dnn::Net net;
+
     std::vector<std::string> classes;
 
     void loadClasses();

@@ -6,6 +6,7 @@ YOLOModel::YOLOModel(const std::string& cfgPath, const std::string& weightsPath,
     net.setPreferableBackend(cv::dnn::DNN_BACKEND_OPENCV);
     net.setPreferableTarget(cv::dnn::DNN_TARGET_CPU);
     loadClasses();
+    //net = cv::dnn::Net::Net();   
 }
 
 void YOLOModel::loadClasses() {
